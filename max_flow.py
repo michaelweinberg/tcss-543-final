@@ -33,7 +33,7 @@ for graphType in graphTypes:
             timeElapsed = (endTime - startTime)*1000 # to get milliseconds
             elapsedTimes.append(timeElapsed)
             memoryUsage.append(peak)
-            print("Max Flow: ", max_flow)
+            print(f"Max Flow of {graphType}{x} calculated by {algo}: ", max_flow)
         timeResults.append({"name": algo, "values": elapsedTimes, "xAxis": n})
         memoryResults.append({"name": algo, "values": memoryUsage, "xAxis": n})
     data.append({"dataset": f"{graphType} Graph", "xAxis": 'size', "results": {"time": timeResults, "memory": memoryResults}})
