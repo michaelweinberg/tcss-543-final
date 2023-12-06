@@ -1,3 +1,4 @@
+import sys
 from collections import defaultdict, deque
 from turtle import update
 from read_graph import read_graph
@@ -58,7 +59,10 @@ def scaling_m_f(graph, nodes):
 
     return max_flow  
 
-file_name = input("Enter the name of the graph file: ")
+if len(sys.argv) > 1:
+    file_name = sys.argv[1]
+else:
+    file_name = input("Enter the name of the graph file: ")
 graph,nodes = read_graph(file_name)
 max_flow = scaling_m_f(graph, nodes)
 print("Max Flow: ", max_flow)
