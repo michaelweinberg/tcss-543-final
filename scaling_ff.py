@@ -41,7 +41,6 @@ def scaling_ff(graph, nodes):
     delta = find_delta(graph)
     while delta >= 1:
         residual_graph = update_r_graph(nodes, capacity, delta)
-        path = find_path(residual_graph.adj_list, nodes)
         while (path := find_path(residual_graph.adj_list, nodes)) is not None:
             f,b = augment(f, path, capacity)
             for u, v in zip(path, path[1:]):

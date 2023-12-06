@@ -10,7 +10,6 @@ algorithms = {
     "scaling-ff": scaling_ff,
 }
 graphTypes = ["Bipartite", "FixedDegree"]
-# Bipartite graph
 n = [25, 50, 100, 200, 400]
 data = []
 
