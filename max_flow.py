@@ -3,14 +3,15 @@ import plot
 import tracemalloc
 from scaling_ff import scaling_ff
 from read_graph import read_graph
+from ff import ff
 
 algorithms = { 
+    "ff": ff,
     "scaling-ff": scaling_ff,
-    "test-ff": scaling_ff,
 }
-graphTypes = ["bipartite", "fixedDegree"]
+graphTypes = ["Bipartite", "FixedDegree"]
 # Bipartite graph
-n = [25, 50]
+n = [25, 50, 100, 200, 400]
 data = []
 
 for graphType in graphTypes:
@@ -35,7 +36,7 @@ for graphType in graphTypes:
             print("Max Flow: ", max_flow)
         timeResults.append({"name": algo, "values": elapsedTimes, "xAxis": n})
         memoryResults.append({"name": algo, "values": memoryUsage, "xAxis": n})
-    data.append({"dataset": f"{graphType.capitalize()} Graph", "xAxis": 'size', "results": {"time": timeResults, "memory": memoryResults}})
+    data.append({"dataset": f"{graphType} Graph", "xAxis": 'size', "results": {"time": timeResults, "memory": memoryResults}})
 
 for set in data:
     plot.plot(set)

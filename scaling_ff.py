@@ -29,7 +29,6 @@ def update_r_graph(nodes, capacity, delta):
 
 def scaling_ff(graph, nodes):
     max_flow = 0
-    current_flow = 0
     capacity = defaultdict(dict)
     f = defaultdict(dict) 
     for u in nodes:
@@ -43,18 +42,14 @@ def scaling_ff(graph, nodes):
     while delta >= 1:
         residual_graph = update_r_graph(nodes, capacity, delta)
         path = find_path(residual_graph.adj_list, nodes)
-        while path:
+        while (path := find_path(residual_graph.adj_list, nodes)) is not None:
             f,b = augment(f, path, capacity)
             for u, v in zip(path, path[1:]):
                 capacity[u][v] -= b
                 capacity[v][u] += b
-                residual_graph = update_r_graph(nodes, capacity, delta)
-                    
-            path = find_path(residual_graph.adj_list, nodes)
+            residual_graph = update_r_graph(nodes, capacity, delta)
         delta = delta / 2
     for u in nodes:
-        if (f['s'][u] != 0):
-            max_flow = max_flow + f['s'][u]
-    current_flow = max_flow - current_flow
+        max_flow += f['s'][u]
 
     return max_flow

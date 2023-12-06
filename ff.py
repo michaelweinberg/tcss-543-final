@@ -33,15 +33,6 @@ def ff(graph, nodes):
             capacity[v][u] += b
         residuals = update_r_graph(nodes, capacity)
     max_flow = 0
-    print(f['s'])
     for u in nodes:
         max_flow += f['s'][u]
     return max_flow
-
-if len(sys.argv) > 1:
-    file_name = sys.argv[1]
-else:
-    file_name = input("Enter the name of the graph file: ")
-graph,nodes = read_graph(file_name)
-max_flow = ff(graph, nodes)
-print("Max Flow: ", max_flow)
