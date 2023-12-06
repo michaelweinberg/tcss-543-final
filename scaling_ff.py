@@ -1,4 +1,6 @@
+import sys
 from collections import defaultdict
+from turtle import update
 from read_graph import read_graph
 from adjacency_list import AdjacencyList
 from find_path import find_path
@@ -55,4 +57,4 @@ def scaling_ff(graph, nodes):
             max_flow = max_flow + f['s'][u]
     current_flow = max_flow - current_flow
 
-    return max_flow  
+    return max_flow

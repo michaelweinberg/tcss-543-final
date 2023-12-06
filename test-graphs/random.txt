@@ -1,9 +1,9 @@
-s v7 13
-s v8 7
-s v3 11
-v5 t 8
-v2 t 11
-v1 t 15
+s  v7 13
+s  v8 7
+s  v3 11
+v5 t  8
+v2 t  11
+v1 t  15
 v1 v7 10
 v1 v6 13
 v1 v8 6
