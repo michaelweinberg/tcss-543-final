@@ -1,5 +1,4 @@
-from collections import defaultdict, deque
-from turtle import update
+from collections import defaultdict
 from read_graph import read_graph
 from adjacency_list import AdjacencyList
 from find_path import find_path
@@ -26,7 +25,7 @@ def update_r_graph(nodes, capacity, delta):
                 residual_graph.add_edge(u,v)
     return residual_graph   
 
-def scaling_m_f(graph, nodes):
+def scaling_ff(graph, nodes):
     max_flow = 0
     current_flow = 0
     capacity = defaultdict(dict)
@@ -57,8 +56,3 @@ def scaling_m_f(graph, nodes):
     current_flow = max_flow - current_flow
 
     return max_flow  
-
-file_name = input("Enter the name of the graph file: ")
-graph,nodes = read_graph(file_name)
-max_flow = scaling_m_f(graph, nodes)
-print("Max Flow: ", max_flow)
