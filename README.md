@@ -92,7 +92,25 @@ The generated plots should resemble the following:
 As before, the algorithm names are `ff` for Ford-Fulkerson, `scaling-ff` for Scaling Ford-Fulkerson,
 and `preflow_push` for Preflow-Push, time is measured in milliseconds, and space is measured in bytes.
 
-## Dicussion of Algorithms
+## Dicussion of Algorithm Implementations
+
+For all algorithms, graphs are represented by nested dictionaries.
+For each edge `u`->`v` with weight `w` in graph `g`, `g[u][v] = w`.
+
+### Ford-Fulkerson
+
+Ford-Fulkerson operates by repeatedly attempting random paths through the graph,
+each time increasing the flow slightly until the maximum is reached.
+
+Ford-Fulkerson is largely implemented in ff.py.
+
+`update_r_graph` builds a residual graph,
+`ff` orchestrates the majority of the algorithm.
+
+Additionally, augment.py contains `augment`, which augments a graph with a path through it,
+and find_path.py contains `find_path`, which selects a path with positive flow through a graph.
+
+Both augment and find_path are also used by Scaling Ford-Fulkerson.
 
 ### Preflow Push (Kleinberg and Todos 7.4)
 
