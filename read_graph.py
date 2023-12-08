@@ -1,17 +1,32 @@
 from collections import defaultdict
 
 class Edge:
-
+    """
+    A class representing and edge in the graph
+    of the flow network
+    """
     def __init__(self, flow, capacity, u, v):
+        """
+        :param flow: the amount of flow going through the edge
+        :param capacity: the capacity of the edge
+        :param u: the source vertex of a directed edge
+        :param v: the destination vertex of a directed edge
+        """
         self.flow = flow
         self.capacity = capacity
         self.u = u
         self.v = v
 class Vertex:
-
-    def __init__(self, h, e_flow):
-        self.h = h
-        self.e_flow = e_flow
+    """
+    A class representing a Vertex in the graph
+    """
+    def __init__(self, height, excess_flow):
+        """
+        :param height: the height of a vertex
+        :param excess_flow: the excess flow of a vertex
+        """
+        self.height = height
+        self.excess_flow = excess_flow
 def read_graph(file_name, graph_type):
     if graph_type == "preflow_push":
         nodes = []

@@ -4,17 +4,16 @@ import tracemalloc
 from scaling_ff import scaling_ff
 from read_graph import read_graph
 from ff import ff
-from preflow_push import Graph, Vertex, Edge, preflow_push
+from preflow_push import preflow_push
 
 algorithms = { 
-    "ff": ff,
-    "scaling-ff": scaling_ff,
+    # "ff": ff,
+    # "scaling-ff": scaling_ff,
     "preflow_push": preflow_push
 }
 # graphTypes = ["Bipartite", "FixedDegree"]
 graphTypes = ["Bipartite"]
 n = [25, 50, 75, 100]
-# n = [25, 50]
 data = []
 
 for graphType in graphTypes:
@@ -39,26 +38,6 @@ for graphType in graphTypes:
             print(f"Max Flow of {graphType}{x} calculated by {algo}: ", max_flow)
         timeResults.append({"name": algo, "values": elapsedTimes, "xAxis": n})
         memoryResults.append({"name": algo, "values": memoryUsage, "xAxis": n})
-    # elapsedTimes = []
-    # memoryUsage = []
-    # for x in n:
-    #     file_name = f"./test-graphs/{graphType}/{graphType}" + str(x) + "-10-percent-pp.txt"
-    #
-    #     startTime = time.time()
-    #     g = Graph(x + 2)
-    #     g.read_graph_pp(file_name, graphType, x)
-    #     startTime = time.time()
-    #     tracemalloc.start()
-    #     my_max_flow = g.getMaxFlow('0', str(x + 1))
-    #     endTime = time.time()
-    #     current, peak = tracemalloc.get_traced_memory()
-    #     tracemalloc.stop()
-    #     timeElapsed = (endTime - startTime) * 1000  # to get milliseconds
-    #     elapsedTimes.append(timeElapsed)
-    #     memoryUsage.append(peak)
-    #     print(f"Max Flow of {graphType}{x} calculated by Preflow push: ", my_max_flow)
-    # timeResults.append({"name": "Preflow Push", "values": elapsedTimes, "xAxis": n})
-    # memoryResults.append({"name": "Preflow Push", "values": memoryUsage, "xAxis": n})
 
     data.append({"dataset": f"{graphType} Graph", "xAxis": 'size', "results": {"time": timeResults, "memory": memoryResults}})
 
