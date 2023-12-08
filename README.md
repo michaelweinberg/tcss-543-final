@@ -140,16 +140,16 @@ must be at least as much as the flow exiting a flow.  This inequality can be ref
 excess flow.  In doing this, the preflow push algorithm works towards satisfying conservation constraints
 as opoposed to maintaining them at every stage of execution, like in ford-fulkerson.
 
-The preflow_push.py file contains the following methods
+The `preflow_push.py` file contains the following methods
 
-`__init__` method to initialize the graph of a flow network
-`add_edge` method to add an edge to the graph
-`preflow` method to initialize heights and flows in the flow network
-`overflow_vertex` method to identify vertex to push excess flow to
-`update_reverse_edge_flow` update the reverse flow on the reverse edge in the residual graph
-`push` method to push flow to a lower height node
-`relabel` method to relabel/decrease height value of a vertex
-`getMaxFlow` master method to retrieve max flow
+* `__init__` method to initialize the graph of a flow network
+* `add_edge` method to add an edge to the graph
+* `preflow` method to initialize heights and flows in the flow network
+* `overflow_vertex` method to identify vertex to push excess flow to
+* `update_reverse_edge_flow` update the reverse flow on the reverse edge in the residual graph
+* `push` method to push flow to a lower height node
+* `relabel` method to relabel/decrease height value of a vertex
+* `getMaxFlow` master method to retrieve max flow
 
 
     -[^1]: Kleinberg, Jon; Tardos, Eva. Algorithm Design (p. 358). Pearson Education. Kindle Edition.
