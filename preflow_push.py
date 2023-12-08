@@ -14,11 +14,14 @@ class Vertex:
 
 class Graph:
 
-    def __init__(self, V):
+    def __init__(self, graph, nodes):
 
-        self.V = V;
-        self.edge = []
-        self.ver = {}
+        # self.V = V;
+        # self.edge = []
+        # self.ver = {}
+        # self.V = V;
+        self.edge = nodes
+        self.ver = graph
 
     def addEdge(self, u, v, capacity):
 
@@ -38,12 +41,16 @@ class Graph:
 
                 self.edge.append(Edge(-self.edge[i].flow, 0, self.edge[i].v, s))
 
-    def overFlowVertex(self):
+    def overFlowVertex(self, s, t):
 
-        for i in range(1, len(self.ver) - 1):
-            thing = self.ver[str(i)].e_flow
-            if (self.ver[str(i)].e_flow > 0):
-                return str(i)
+        for key in self.ver:
+            thing = self.ver[key].e_flow
+            if (self.ver[key].e_flow > 0 and key != s and key != t):
+                return key
+        # for i in range(1, len(self.ver) - 1):
+        #     thing = self.ver[str(i)].e_flow
+        #     if (self.ver[str(i)].e_flow > 0):
+        #         return str(i)
 
         return -1
 
@@ -103,18 +110,18 @@ class Graph:
 
         self.preflow(s);
         counter = 0
-        while (self.overFlowVertex() != -1):
+        while (self.overFlowVertex(s, t) != -1):
             counter += 1
-            u = self.overFlowVertex();
+            u = self.overFlowVertex(s, t);
             if (self.push(u) == False):
                 self.relabel(u);
 
-        return self.ver[str(len(self.ver) - 1)].e_flow
+        return self.ver['t'].e_flow
 
     # def parse_pp(self, value, graphType, n):
 
 
-    def read_graph_pp(self, file_name, graphType, n):
+    def read_graph_pp(self, file_name):
 
         with open(file_name, 'r') as file:
             for line in file:
@@ -129,10 +136,10 @@ class Graph:
                     if len(values) > 1:
                         self.addEdge(u, v, c)
 
-# V = 402;
+# V = 6;
 # g = Graph(V);
-
-# g.read_graph_pp('../test-graphs/fixedDegree/fixedDegree25.txt')
+#
+# g.read_graph_pp('test-graphs/bipartite/bipartite25.txt')
 
 # Creating above shown flow network
 # g.addEdge('0', '1', 16);
@@ -147,7 +154,13 @@ class Graph:
 # g.addEdge('4', '5', 4);
 
 # Initialize source and sink
-# s = '0'
-# t = '401';
-
+# s = 's'
+# t = 't';
+# #
 # print("Maximum flow is ", g.getMaxFlow(s, t));
+
+def preflow_push(graph, nodes):
+    s = 's'
+    t = 't';
+    g = Graph(graph, nodes);
+    return g.getMaxFlow(s, t)
