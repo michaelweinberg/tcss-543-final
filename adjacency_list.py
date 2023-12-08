@@ -37,3 +37,10 @@ class AdjacencyList:
 
         self.adj_list = reversed_adj_list
         return self.adj_list
+    
+"""
+CITATIONS: 
+https://www.geeksforgeeks.org/generate-graph-using-dictionary-python/
+https://www.geeksforgeeks.org/print-adjacency-list-for-a-directed-graph/
+https://www.algotree.org/algorithms/adjacency_list/graph_as_adjacency_list_python/#google_vignette
+"""
