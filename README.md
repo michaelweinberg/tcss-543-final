@@ -110,7 +110,24 @@ Ford-Fulkerson is largely implemented in ff.py.
 Additionally, augment.py contains `augment`, which augments a graph with a path through it,
 and find_path.py contains `find_path`, which selects a path with positive flow through a graph.
 
-Both augment and find_path are also used by Scaling Ford-Fulkerson.
+### Scaling Ford-Fulkerson
+
+Scaling Ford-Fulkerson is similar to original Ford-Fulkerson with a difference that with delta scaling phase it uses only the edges with residual capaacity of at least delta, making sure to increase the flow value by at least delta during each augmentation.
+
+* Scaling Ford-Fulkerson is implemented in scaling_ff.py.
+    * `max_capacity_out_of_s` - method finding the max capacity of edges going out of s
+    * `find_delta` - method finding initial value of delta
+    * `update_r_graph` - method updating residual graph with respect to the current capacities and delta
+    * `scaling_ff` - contains main logic of the Scaling Ford-Fulkerson algorithm
+
+Other modules used for Scaling Ford-Fulkerson:
+* adjacency_list.py - Class to represent an adjacency list of a graph
+    * `add_edge` - method to add an edge
+    * `delete_edge` - method to delete an edge
+    * `reverse` - method to reverse an adjacency list
+* augment.py - augments the flow, taking current flow, augmenting path and current capacities as input parameters
+* bfs.py - runs bfs on the graph
+* find_path - finding path from the source to the sink of the either initail or residual graph
 
 ### Preflow Push
 
@@ -133,3 +150,11 @@ The preflow_push.py file contains the following methods
 `push` method to push flow to a lower height node
 `relabel` method to relabel/decrease height value of a vertex
 `getMaxFlow` master method to retrieve max flow
+
+
+    -[^1]: Kleinberg, Jon; Tardos, Eva. Algorithm Design (p. 358). Pearson Education. Kindle Edition.
+    -[^2]: Kleinberg, Jon; Tardos, Eva. Algorithm Design (p. 360-61). Pearson Education.
+    -[^3]: https://www.geeksforgeeks.org/generate-graph-using-dictionary-python/
+    -[^4]: https://www.geeksforgeeks.org/print-adjacency-list-for-a-directed-graph/
+    -[^5]:https://www.algotree.org/algorithms/adjacency_list/graph_as_adjacency_list_python/#google_vignette
+    -[^6]: https://www.geeksforgeeks.org/push-relabel-algorithm-set-2-implementation/
