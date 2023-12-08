@@ -1,5 +1,97 @@
 # TCSS 543 Final - Group B
 
+## Requirements
+
+Python 3
+
+Tested with Python 3.12 under Windows, Mac, and Ubuntu on an x86-64 processor. 
+
+To run in benchmark mode, matplotlib is required.
+
+`python3 -m pip install matplotlib`
+
+Matplotlib is unnecessary for running the program in manul mode.
+
+## Usage
+
+### Manual mode
+
+`python3 max_flow.py input_graph_1.txt input_graph_2.txt ...`
+
+Under manual mode, the program will go through each file provided, and list the
+max flow found under all three algorithms, along with the time consumed and memory usage.
+No plot is provided in this mode.
+
+### Benchmark mode
+
+`python3 max_flow.py` or `python3 max_flow.py --benchmark`: 
+
+Under benchmark mode, the program will run all three max flow algorithms on a fixed set
+of bipartite and fixed-degree graphs, at 25, 50, 100, and 200 nodes.
+
+The max flow of each graph will be displayed as calculated by all three algorithms.
+
+Plots of time and memory usage vs graph size for each graph type will be displayed,
+with data for all three algorithms displayed together.
+
+## Expected results
+### Manual Mode
+Under manual mode, the expected output resembles the following (for `test-graphs/random.txt`):
+```
+.\test-graphs\bipartite\bipartite100.txt
+        ff: Max Flow is 24282   Time elapsed is 1122.8530406951904      Memory usage is 2841552
+        scaling-ff: Max Flow is 24282   Time elapsed is 853.071928024292        Memory usage is 2841184
+        preflow_push: Max Flow is 24282 Time elapsed is 9455.296516418457       Memory usage is 204996
+```
+
+The file for the graph being measured is listed first,
+followed by lines `ff` for Ford-Fulkerson, `scaling-ff` for Scaling Ford-Fulkerson,
+and `preflow_push` for Preflow-Push.
+Each row includes the found max flow, time, and memory usage.
+
+Time is in millseconds and memory usage is in bytes.
+
+### Benchmark mode
+
+Under benchmark mode, the expected output is as follows:
+
+```
+Max Flow of bipartite25 calculated by ff:  6560
+Max Flow of bipartite50 calculated by ff:  13169
+Max Flow of bipartite100 calculated by ff:  24282
+Max Flow of bipartite200 calculated by ff:  51532
+Max Flow of bipartite25 calculated by scaling-ff:  6560
+Max Flow of bipartite50 calculated by scaling-ff:  13169
+Max Flow of bipartite100 calculated by scaling-ff:  24282
+Max Flow of bipartite200 calculated by scaling-ff:  51532
+Max Flow of bipartite25 calculated by preflow_push:  6560
+Max Flow of bipartite50 calculated by preflow_push:  13169
+Max Flow of bipartite100 calculated by preflow_push:  24282
+Max Flow of bipartite200 calculated by preflow_push:  51532
+Max Flow of fixedDegree25 calculated by ff:  3430
+Max Flow of fixedDegree50 calculated by ff:  6164
+Max Flow of fixedDegree100 calculated by ff:  12916
+Max Flow of fixedDegree200 calculated by ff:  23334
+Max Flow of fixedDegree25 calculated by scaling-ff:  3430
+Max Flow of fixedDegree50 calculated by scaling-ff:  6164
+Max Flow of fixedDegree100 calculated by scaling-ff:  12916
+Max Flow of fixedDegree200 calculated by scaling-ff:  23334
+Max Flow of fixedDegree25 calculated by preflow_push:  3430
+Max Flow of fixedDegree50 calculated by preflow_push:  6164
+Max Flow of fixedDegree100 calculated by preflow_push:  12916
+Max Flow of fixedDegree200 calculated by preflow_push:  23334
+```
+
+The generated plots should resemble the following:
+
+![](BipartiteTime.png)
+![](BipartiteSpace.png)
+![](FixedDegreeTime.png)
+![](FixedDegreeSpace.png)
+
+As before, the algorithm names are `ff` for Ford-Fulkerson, `scaling-ff` for Scaling Ford-Fulkerson,
+and `preflow_push` for Preflow-Push, time is measured in milliseconds, and space is measured in bytes.
+
 ## Dicussion of Algorithms
 
 ### Preflow Push (Kleinberg and Todos 7.4)

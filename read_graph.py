@@ -32,7 +32,7 @@ def read_graph(file_name, algo_type):
     """
     method reading graph from a file 
     :param file_name: path to and name of the file containing graph info
-    :param graph_type: type of the algorithm
+    :param algo_type: type of the algorithm
     :return: graph and set of its nodes
     """
     if algo_type == "preflow_push":
