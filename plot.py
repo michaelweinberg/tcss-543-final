@@ -2,7 +2,7 @@
 from cProfile import label
 import matplotlib.pyplot as plt
 
-# function used to build the graphs
+# method used to plot the figures
 def plot(set):
     for result in set["results"]:
         for algorithm in set["results"][result]:

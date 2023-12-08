@@ -8,13 +8,26 @@ from augment import augment
 from read_graph import read_graph
 
 def update_r_graph(nodes, capacity):
+    """
+    method updating residual graph with respect to the current capacities
+    :param nodes: set of all nodes of the graph
+    :param capacity: current capacities of the graph edges
+    :return: residual graph
+    """
     residual_graph = AdjacencyList()
     for u in nodes:
         for v in nodes:
             if capacity[u][v] > 0:
                 residual_graph.add_edge(u, v)
     return residual_graph
+
 def ff(graph, nodes):
+    """
+    method calculating max flow using Ford Fulkerson algorithm
+    :param graph: initial graph
+    :param nodes: set of all nodes of the graph
+    :return: the max flow of a flow network
+    """
     capacity = defaultdict(dict)
     f = defaultdict(dict)
     for u in nodes:

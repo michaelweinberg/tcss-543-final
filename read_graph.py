@@ -27,8 +27,15 @@ class Vertex:
         """
         self.height = height
         self.excess_flow = excess_flow
-def read_graph(file_name, graph_type):
-    if graph_type == "preflow_push":
+
+def read_graph(file_name, algo_type):
+    """
+    method reading graph from a file 
+    :param file_name: path to and name of the file containing graph info
+    :param graph_type: type of the algorithm
+    :return: graph and set of its nodes
+    """
+    if algo_type == "preflow_push":
         nodes = []
     else:
         nodes = set()
@@ -38,7 +45,7 @@ def read_graph(file_name, graph_type):
             values = line.split()
             if values:                
                 u,v,c = values[0], values[1], values[2]
-                if graph_type == "preflow_push":
+                if algo_type == "preflow_push":
                     nodes.append(Edge(0, int(c), u, v))
                     if u not in graph:
                         graph[u] = (Vertex(0, 0))

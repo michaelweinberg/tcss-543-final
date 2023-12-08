@@ -2,6 +2,11 @@ from collections import defaultdict, deque
 from adjacency_list import AdjacencyList
 
 def bfs(graph, nodes):
+    """
+    method running bfs on the graph
+    :param graph: current graph (either initial or residual)
+    :param nodes: set of all nodes of the graph
+    """
     discovered = {node: False for node in nodes}
     discovered['s'] = True
     L = [deque()]

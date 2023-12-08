@@ -7,12 +7,22 @@ from find_path import find_path
 from augment import augment
 
 def max_capacity_out_of_s(graph):
+    """
+    method finding the max capacity of edges going out of s
+    :param graph: initial graph
+    :return: max capacity
+    """
     max_c = 0
     for c in graph['s'].values():
         max_c = max(max_c,c)
     return max_c
 
 def find_delta(graph):
+    """
+    method finding initial value of delta
+    :param graph: initial graph
+    :return: initial delta
+    """
     delta = 1
     max_c = max_capacity_out_of_s(graph)
     while delta*2 <= max_c:
@@ -20,6 +30,13 @@ def find_delta(graph):
     return delta
 
 def update_r_graph(nodes, capacity, delta):
+    """
+    method updating residual graph with respect to the current capacities and delta
+    :param nodes: set of all nodes of the graph
+    :param capacity: current capacities of the graph edges
+    :param delta: current delta
+    :return: residual graph
+    """
     residual_graph = AdjacencyList()
     for u in nodes:
         for v in nodes:
@@ -28,6 +45,12 @@ def update_r_graph(nodes, capacity, delta):
     return residual_graph   
 
 def scaling_ff(graph, nodes):
+    """
+    method calculating max flow using scaling Ford Fulkerson algorithm
+    :param graph: initial graph
+    :param nodes: set of all nodes of the graph
+    :return: the max flow of a flow network
+    """
     max_flow = 0
     capacity = defaultdict(dict)
     f = defaultdict(dict) 
