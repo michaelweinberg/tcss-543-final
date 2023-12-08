@@ -138,10 +138,16 @@ class Graph:
 
         return self.vertices['t'].excess_flow
 
-def preflow_push(graph, nodes):
+def preflow_push(vertices, edges):
+    """
+    function to import that will instatiate the flow network and return a max flow
+    :param vertices: the vertices in a flow network
+    :param edges: the edges in a flow network
+    :return: and integer representing the max flow of a flow network
+    """
     s = 's'
     t = 't';
-    g = Graph(graph, nodes);
+    g = Graph(vertices, edges);
     return g.getMaxFlow(s, t)
 
 """
