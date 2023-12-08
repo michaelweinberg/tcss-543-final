@@ -7,8 +7,8 @@ from ff import ff
 from preflow_push import preflow_push
 
 algorithms = { 
-    # "ff": ff,
-    # "scaling-ff": scaling_ff,
+    "ff": ff,
+    "scaling-ff": scaling_ff,
     "preflow_push": preflow_push
 }
 # graphTypes = ["Bipartite", "FixedDegree"]
