@@ -16,8 +16,8 @@ class Graph:
         """
         method to add an edge to the graph
         :param u: the source vertex of a directed edge
-        :param v: the destination vertex of a directed edge
         :param capacity: the capacity of the edge
+        :param v: the destination vertex of a directed edge
         """
         self.edges.append(Edge(0, capacity, u, v))
 
@@ -76,6 +76,7 @@ class Graph:
 
     def push(self, u):
         """
+        method to push flow to a lower height node
         :param u: the vertex the flow is being pushed from
         :return: boolean of whether or not to continue pushing
                 flow
